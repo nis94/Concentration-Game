@@ -1,0 +1,7 @@
+﻿
+namespace Concentration
+{
+    class Player
+    {
+    }
+}
