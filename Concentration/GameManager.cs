@@ -31,33 +31,42 @@ namespace Concentration
 
         }
 
+        public void flipCard(string card1)
+        {
+            int row = card1[0] - '0';
+            int col = card1[1] - '0';
+            m_Board.Matrix[row, col].IsFlipped = true; 
+        }
+
+    }
+
 
 
 <<<<<<< HEAD
-        //        }
-        //        else
-        //        {
-        //            sleep
-        //        }
+    //        }
+    //        else
+    //        {
+    //            sleep
+    //        }
 
 
 
 
-        //            isPair=CheckIfpair(chos1, chos2);
+    //            isPair=CheckIfpair(chos1, chos2);
 
-        //            if(isPair)
-        //            {
-        //                //1) Player score ++
-        //                /
-        //            }
-        //            else
-        //            {
+    //            if(isPair)
+    //            {
+    //                //1) Player score ++
+    //                /
+    //            }
+    //            else
+    //            {
 
-        //            }
+    //            }
 
-        //            }
-        //    }
-        //}
+    //            }
+    //    }
+    //}
 =======
         public void GameSetup()
         {
@@ -68,5 +77,5 @@ namespace Concentration
         }
 
 >>>>>>> 09f219e8342e64b2948d1765e447ac3580193161
-    }
+}
 }

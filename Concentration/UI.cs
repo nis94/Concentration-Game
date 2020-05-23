@@ -36,6 +36,7 @@ namespace Concentration
 
             m_newGame=new GameManager(m_player1, m_player2, m_gameBoard);
         }
+
         public static void getPlayerInfoFromUser(Player player)
         {
             ///////////////////////////////////////////////////////////Check validity
@@ -50,24 +51,26 @@ namespace Concentration
         {
             while (m_isEndOfGame)
             
-                ///Check Validity
+                ///Check Validity (chek if already flipped. check if valid chars)
                 Console.WriteLine("Please enter first card location: ");
-                string height = Console.ReadLine();
-                ///////////////
-                m_newGame.
+                string Card1Location = Console.ReadLine();
+            ///////////////
+            m_newGame.flipCard(Card1Location);
+            
+
 
 
                 ///Check Validity
                 Console.WriteLine("Please enter second card location: ");
                 string width = Console.ReadLine();
                 ///////////////
-            }
-        }
+         }
+        
 
 
 
 
-        public static void printBoard(Board brd)
+        public void printBoard()
         {
             char ch = 'A';
 
