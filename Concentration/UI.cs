@@ -2,7 +2,7 @@
 namespace Concentration
 {
     public class UI
-    {      
+    {
         private Player m_player1, m_player2;
         private GameManager m_newGame;
         private Board m_gameBoard;
@@ -12,11 +12,11 @@ namespace Concentration
         {
             Console.WriteLine("Welcome To Concentration Game!");
             getPlayerInfoFromUser(m_player1);
-            
+
             ///////////////////////////////////////////////////////////Check validity
             Console.WriteLine("Press 1 for game against other player\nPress 2 for game against computer");
-            string rivalType=Console.ReadLine();
-            if(rivalType=="1")
+            string rivalType = Console.ReadLine();
+            if (rivalType == "1")
             {
                 getPlayerInfoFromUser(m_player2);
             }
@@ -34,7 +34,7 @@ namespace Concentration
             m_gameBoard = new Board(int.Parse(height), int.Parse(width));
             ///////////////////////////////////////////////////////////
 
-            m_newGame=new GameManager(m_player1, m_player2, m_gameBoard);
+            m_newGame = new GameManager(m_player1, m_player2, m_gameBoard);
         }
         public static void getPlayerInfoFromUser(Player player)
         {
@@ -43,27 +43,25 @@ namespace Concentration
             string playerName = Console.ReadLine();
             player = new Player(playerName);
             ///////////////////////////////////////////////////////////
-           
+
         }
 
         public void RunGame()
         {
             while (m_isEndOfGame)
-            
+
                 ///Check Validity
                 Console.WriteLine("Please enter first card location: ");
-                string height = Console.ReadLine();
-                ///////////////
-                m_newGame.
+            string height = Console.ReadLine();
+            ///////////////
+            m_newGame.
 
 
                 ///Check Validity
                 Console.WriteLine("Please enter second card location: ");
-                string width = Console.ReadLine();
-                ///////////////
-            }
+            string width = Console.ReadLine();
+            ///////////////
         }
-
 
 
 

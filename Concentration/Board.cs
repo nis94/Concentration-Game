@@ -11,7 +11,6 @@ namespace Concentration
         {
             r_height = height;
             r_width = width;
-            r_maxNumOfPairs = (height * width) / 2;
             m_matrix = new Card[height, width];
             this.makeNewGameBoard();
         }
