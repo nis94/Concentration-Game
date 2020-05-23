@@ -9,7 +9,7 @@ namespace Concentration
             B.printBoard();
            
 
-            Console.WriteLine("Press Enter To Exit...");
+            Console.WriteLine("\n\nPress Enter To Exit...");
             Console.ReadLine();
         }
     }

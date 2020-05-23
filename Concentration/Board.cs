@@ -43,7 +43,7 @@ namespace Concentration
 
         private void insertPairsOfItems()
         {
-            char ch = 'A';
+            char ch = 'G';
             bool isFirstRound = true;
             for (int i = 0; i < r_height; i++)
             {
@@ -53,7 +53,7 @@ namespace Concentration
                     ch++;
                     if (i == r_height / 2 - 1 && j == r_width - 1 && isFirstRound)
                     {
-                        ch = 'A';
+                        ch = 'G';
                         isFirstRound = !true;
                     }
                 }
@@ -70,64 +70,66 @@ namespace Concentration
                 {
                     rndHeightIndex = rnd.Next(0, r_height - 1);
                     rndWidthIndex = rnd.Next(0, r_width - 1);
-                    Board.swapCards(m_board[i, j], m_board[rndHeightIndex, rndWidthIndex]);
+                    Board.swapCards(ref m_board[i, j], ref m_board[rndHeightIndex, rndWidthIndex]);
                 }
             }
         }
 
-        private static void swapCards(Card crd1, Card crd2)
+        private static void swapCards(ref Card o_crd1, ref Card o_crd2)
         {
-            Card tmpCard = crd1;
-            crd1 = crd2;
-            crd2 = tmpCard;
+            Card tmpCard = o_crd1;
+            o_crd1 = o_crd2;
+            o_crd2 = tmpCard;
         }
 
         public void printBoard()
         {
             char ch = 'A';
 
-            Console.Write("  ");
+            Console.Write("     ");
             for (int i = 0; i < r_width; i++)
             {
-
                 Console.Write(ch.ToString());
-                Console.Write("  ");
+                Console.Write("   ");
                 ch++;
             }
 
             for (int i = 0; i < r_height; i++)
             {
                 Console.Write(Environment.NewLine);
-                if (i % 2 == 0)
+                Console.Write("   ");
+                for (int k = 0; k < r_width; k++)
                 {
-                    Console.Write((i + 1).ToString());
-                    Console.Write(" ");
-                    for (int j = 0; j < r_width; j++)
-                    {
-                        Console.Write("|");
-                        //if (m_board[i, j].IsFound == true)
-                        //{
-                            Console.Write(m_board[i, j].Item.ToString());
-                        //}
-                        //else
-                        //{
-                        //    Console.Write(" ");
-
-                        //}
-                        Console.Write("|");
-                    }
+                    Console.Write("====");
                 }
-                else
+                Console.Write("=");
+                Console.Write(Environment.NewLine);
+                Console.Write((i + 1).ToString());
+                Console.Write(" ");
+                for (int j = 0; j < r_width; j++)
                 {
-                    for (int j = 0; j < r_width * 4; j++)
-                    {
-                        Console.Write("=");
-                    }
-                }
+                    Console.Write(" | ");
+                    //if (m_board[i, j].IsFound == true)
+                    //{
+                        Console.Write(m_board[i, j].Item.ToString());
+                    //}
+                    //else
+                    //{
+                    //    Console.Write(" ");
 
+                    //}
+                }
+                Console.Write(" |");
             }
             Console.Write(Environment.NewLine);
+            Console.Write("   ");
+            for (int j = 0; j < r_width; j++)
+            {
+                Console.Write("====");
+            }
+            Console.Write("=");
         }
+
 
         private class Card
         {
