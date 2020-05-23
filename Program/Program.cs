@@ -1,12 +1,13 @@
-﻿namespace Program
+﻿using System;
+namespace Concentration
 {
     public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            //  Entry Point - Call the UI
-            System.Console.WriteLine("Press Enter To Exit...");
-            System.Console.ReadLine();
+            
+            Console.WriteLine("Press Enter To Exit...");
+            Console.ReadLine();
         }
     }
 }

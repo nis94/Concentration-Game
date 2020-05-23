@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Concentration
 {
-    class Player
+    class UI
     {
     }
 }
