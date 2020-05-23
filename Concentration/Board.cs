@@ -6,6 +6,7 @@ namespace Concentration
         private readonly int r_height;
         private readonly int r_width;
         private Card[,] m_matrix;
+        
 
         public Board(int height, int width)
         {
@@ -86,7 +87,7 @@ namespace Concentration
         internal class Card
         {
             private readonly char m_item;
-            private bool m_isFound = false;
+            private bool m_isFlipped = false;
 
             public Card(char item)
             {
@@ -98,10 +99,10 @@ namespace Concentration
                 get { return m_item; }
             }
 
-            public bool IsFound
+            public bool IsFlipped
             {
-                get { return m_isFound; }
-                set { m_isFound = value; }
+                get { return m_isFlipped; }
+                set { m_isFlipped = value; }
             }
 
         }
