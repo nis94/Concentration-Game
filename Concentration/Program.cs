@@ -5,9 +5,18 @@ namespace Concentration
     {
         public static void Main()
         {
-            Board B = new Board(4, 4);
-            UI.printBoard(B);
+          //  Board b = new Board(4, 4);
+           // Player p1 = new Player("Nir");
+          //  Player p2 = new Player("Liran");
+           // GameManager gm = new GameManager(p1, p2, b);
+            UI ui = new UI();
+            ui.RunMenu();
+            ui.RunGame();
            
+
+
+            //printBoard(B);
+
 
             Console.WriteLine("\n\nPress Enter To Exit...");
             Console.ReadLine();

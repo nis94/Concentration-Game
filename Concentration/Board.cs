@@ -23,15 +23,6 @@ namespace Concentration
         {
             get { return r_width; }
         }
-        public int MaxNumOfPairs
-        {
-            get { return r_maxNumOfPairs; }
-        }
-        public int NumOfPairsFound
-        {
-            get { return m_numOfPairsFound; }
-            set { m_numOfPairsFound = value; }
-        }
         public Card[,] Matrix
         {
             get { return m_matrix; }
