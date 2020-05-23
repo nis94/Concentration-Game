@@ -8,54 +8,31 @@ namespace Concentration
 {
     class GameManager
     {
+        private Board m_Board;
+        private Player m_player1;
+        private Player m_player2;
+        private int numberOfPlayers; 
+        //UI messages 
+
+        GameSetup();
+        
+
+        
 
 
 
 
-        //Turn(player)
-        //    {
-        //    string chos1, chos2
 
 
 
-        //   if (conputer)
-        //    {
-        //        chos1 = RandChoose()
-        //    }
-        //   else
-        //    {
-        //        chos1 = UI.Choose();
-        //    }
 
-        //    parse(chos1); // --- shoud rerturn i\j
-        //    Board[i,j].isFound=true
-        //    printBoardStatus()
+        public void GameSetup()
+        {
+             
+            m_player1 = new Player(UI.getname());
+            int i_boardHight = UI.
 
-        //        chos2 = Choose();
-        //        if(equal)
-        //        {
+        }
 
-        //        }
-        //        else
-        //        {
-        //            sleep
-        //        }
-            }
-
-              
-
-            isPair=CheckIfpair(chos1, chos2);
-
-            if(isPair)
-            {
-                //1) Player score ++
-                /
-            }
-            else
-            {
-
-            }
-
-            }
     }
 }
