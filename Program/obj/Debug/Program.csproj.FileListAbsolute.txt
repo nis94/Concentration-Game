@@ -1,6 +1,0 @@
-C:\Users\nirol\source\repos\B20 Ex02 Liran 311401657 Nir 205489651\Program\obj\Debug\Program.csprojAssemblyReference.cache
-C:\Users\nirol\source\repos\B20 Ex02 Liran 311401657 Nir 205489651\Program\bin\Debug\Program.exe.config
-C:\Users\nirol\source\repos\B20 Ex02 Liran 311401657 Nir 205489651\Program\bin\Debug\Program.exe
-C:\Users\nirol\source\repos\B20 Ex02 Liran 311401657 Nir 205489651\Program\bin\Debug\Program.pdb
-C:\Users\nirol\source\repos\B20 Ex02 Liran 311401657 Nir 205489651\Program\obj\Debug\Program.exe
-C:\Users\nirol\source\repos\B20 Ex02 Liran 311401657 Nir 205489651\Program\obj\Debug\Program.pdb
