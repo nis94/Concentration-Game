@@ -5,7 +5,7 @@ namespace Concentration
     {
         private readonly string m_Name;
         private int m_Score = 0;
-        private bool m_IsActive;
+        private bool m_IsActive = false;
         private ePlayerType e_PlayerType = ePlayerType.Computer;
         //private string m_FirstFlip;
         //private string m_SecondFlip;
@@ -36,11 +36,19 @@ namespace Concentration
             set { m_IsActive = value; }
         }
 
+<<<<<<< HEAD
+        //public string SecondtFlip
+        //{
+        //    get { return m_SecondtFlip; }
+        //    set { m_SecondtFlip = value; }
+        //}
+=======
         public ePlayerType Type
         {
             get { return e_PlayerType; }
             set { e_PlayerType = value; }
         }
+>>>>>>> 09f219e8342e64b2948d1765e447ac3580193161
 
         //public string FirstFlip
         //{
