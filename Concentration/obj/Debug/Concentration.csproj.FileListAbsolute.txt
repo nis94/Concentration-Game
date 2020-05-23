@@ -10,3 +10,4 @@ C:\Users\user\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentrat
 C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentration.exe.config
 C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentration.exe
 C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentration.pdb
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.csprojAssemblyReference.cache
