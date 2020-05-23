@@ -5,8 +5,6 @@ namespace Concentration
     {
         private readonly int r_height;
         private readonly int r_width;
-        private readonly int r_maxNumOfPairs;
-        private int m_numOfPairsFound = 0;
         private Card[,] m_matrix;
 
         public Board(int height, int width)
