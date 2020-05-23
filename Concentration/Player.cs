@@ -30,37 +30,12 @@ namespace Concentration
             set { m_Score = value; }
         }
 
-        public bool IsActive
-        {
-            get { return m_IsActive; }
-            set { m_IsActive = value; }
-        }
 
-<<<<<<< HEAD
-        //public string SecondtFlip
-        //{
-        //    get { return m_SecondtFlip; }
-        //    set { m_SecondtFlip = value; }
-        //}
-=======
+
         public ePlayerType Type
         {
             get { return e_PlayerType; }
             set { e_PlayerType = value; }
         }
->>>>>>> 09f219e8342e64b2948d1765e447ac3580193161
-
-        //public string FirstFlip
-        //{
-        //    get { return m_FirstFlip; }
-        //    set { m_FirstFlip = value; }
-        //}
-
-        //public string SecondtFlip
-        //{
-        //    get { return m_SecondtFlip; }
-        //    set { m_SecondtFlip = value; }
-        //}
-
     }
 }

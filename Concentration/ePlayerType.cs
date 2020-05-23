@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Concentration
+﻿namespace Concentration
 {
-    public enum ePlayerType : int
+    public enum ePlayerType
     {
         Person = 0,
         Computer = 1

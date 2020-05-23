@@ -12,7 +12,6 @@ namespace Concentration
         {
             r_height = height;
             r_width = width;
-            r_maxNumOfPairs = (height * width) / 2;
             m_matrix = new Card[height, width];
             this.makeNewGameBoard();
         }
@@ -23,15 +22,6 @@ namespace Concentration
         public int Width
         {
             get { return r_width; }
-        }
-        public int MaxNumOfPairs
-        {
-            get { return r_maxNumOfPairs; }
-        }
-        public int NumOfPairsFound
-        {
-            get { return m_numOfPairsFound; }
-            set { m_numOfPairsFound = value; }
         }
         public Card[,] Matrix
         {
