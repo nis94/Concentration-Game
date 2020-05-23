@@ -5,8 +5,8 @@ namespace Concentration
     {
         private readonly string m_Name = "computer";
         private int m_Score = 0;
-        private string m_FirstFlip;
-        private string m_SecondFlip;
+        //private string m_FirstFlip;
+        //private string m_SecondFlip;
 
         public Player() { }
 
@@ -26,17 +26,17 @@ namespace Concentration
             set { m_Score = value; }
         }
 
-        public string FirstFlip
-        {
-            get { return m_FirstFlip; }
-            set { m_FirstFlip = value; }
-        }
+        //public string FirstFlip
+        //{
+        //    get { return m_FirstFlip; }
+        //    set { m_FirstFlip = value; }
+        //}
 
-        public string SecondtFlip
-        {
-            get { return m_SecondtFlip; }
-            set { m_SecondtFlip = value; }
-        }
+        //public string SecondtFlip
+        //{
+        //    get { return m_SecondtFlip; }
+        //    set { m_SecondtFlip = value; }
+        //}
 
     }
 }

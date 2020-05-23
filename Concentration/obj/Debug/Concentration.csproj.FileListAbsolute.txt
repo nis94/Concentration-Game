@@ -4,3 +4,9 @@ C:\Users\nirol\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentra
 C:\Users\nirol\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.csprojAssemblyReference.cache
 C:\Users\nirol\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.exe
 C:\Users\nirol\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.pdb
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.csproj.CoreCompileInputs.cache
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.exe
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.pdb
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentration.exe.config
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentration.exe
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentration.pdb
