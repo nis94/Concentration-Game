@@ -7,14 +7,14 @@ namespace Concentration
         private readonly int r_width;
         private readonly int r_maxNumOfPairs;
         private int m_numOfPairsFound = 0;
-        private Card[,] m_board;
+        private Card[,] m_matrix;
 
         public Board(int height, int width)
         {
             r_height = height;
             r_width = width;
             r_maxNumOfPairs = (height * width) / 2;
-            m_board = new Card[height, width];
+            m_matrix = new Card[height, width];
             this.makeNewGameBoard();
         }
         public int Height
@@ -34,6 +34,10 @@ namespace Concentration
             get { return m_numOfPairsFound; }
             set { m_numOfPairsFound = value; }
         }
+        public Card[,] Matrix
+        {
+            get { return m_matrix; }
+        }
 
         private void makeNewGameBoard()
         {
@@ -49,7 +53,7 @@ namespace Concentration
             {
                 for (int j = 0; j < r_width; j++)
                 {
-                    m_board[i, j] = new Card(ch);
+                    m_matrix[i, j] = new Card(ch);
                     ch++;
                     if (i == r_height / 2 - 1 && j == r_width - 1 && isFirstRound)
                     {
@@ -70,68 +74,19 @@ namespace Concentration
                 {
                     rndHeightIndex = rnd.Next(0, r_height - 1);
                     rndWidthIndex = rnd.Next(0, r_width - 1);
-                    Board.swapCards(ref m_board[i, j], ref m_board[rndHeightIndex, rndWidthIndex]);
+                    Board.swapCards(/*ref*/ m_matrix[i, j], /*ref*/ m_matrix[rndHeightIndex, rndWidthIndex]);
                 }
             }
         }
 
-        private static void swapCards(ref Card o_crd1, ref Card o_crd2)
+        private static void swapCards(/*ref*/ Card o_crd1, /*ref*/ Card o_crd2)
         {
             Card tmpCard = o_crd1;
             o_crd1 = o_crd2;
             o_crd2 = tmpCard;
         }
 
-        public void printBoard()
-        {
-            char ch = 'A';
-
-            Console.Write("     ");
-            for (int i = 0; i < r_width; i++)
-            {
-                Console.Write(ch.ToString());
-                Console.Write("   ");
-                ch++;
-            }
-
-            for (int i = 0; i < r_height; i++)
-            {
-                Console.Write(Environment.NewLine);
-                Console.Write("   ");
-                for (int k = 0; k < r_width; k++)
-                {
-                    Console.Write("====");
-                }
-                Console.Write("=");
-                Console.Write(Environment.NewLine);
-                Console.Write((i + 1).ToString());
-                Console.Write(" ");
-                for (int j = 0; j < r_width; j++)
-                {
-                    Console.Write(" | ");
-                    //if (m_board[i, j].IsFound == true)
-                    //{
-                        Console.Write(m_board[i, j].Item.ToString());
-                    //}
-                    //else
-                    //{
-                    //    Console.Write(" ");
-
-                    //}
-                }
-                Console.Write(" |");
-            }
-            Console.Write(Environment.NewLine);
-            Console.Write("   ");
-            for (int j = 0; j < r_width; j++)
-            {
-                Console.Write("====");
-            }
-            Console.Write("=");
-        }
-
-
-        private class Card
+        internal class Card
         {
             private readonly char m_item;
             private bool m_isFound = false;

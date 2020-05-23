@@ -32,11 +32,11 @@ namespace Concentration
             set { m_FirstFlip = value; }
         }
 
-        public string SecondtFlip
-        {
-            get { return m_SecondtFlip; }
-            set { m_SecondtFlip = value; }
-        }
+        //public string SecondtFlip
+        //{
+        //    get { return m_SecondtFlip; }
+        //    set { m_SecondtFlip = value; }
+        //}
 
     }
 }

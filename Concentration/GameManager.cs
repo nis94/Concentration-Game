@@ -40,22 +40,24 @@ namespace Concentration
         //        {
         //            sleep
         //        }
-            }
 
-              
 
-            isPair=CheckIfpair(chos1, chos2);
 
-            if(isPair)
-            {
-                //1) Player score ++
-                /
-            }
-            else
-            {
 
-            }
+        //            isPair=CheckIfpair(chos1, chos2);
 
-            }
+        //            if(isPair)
+        //            {
+        //                //1) Player score ++
+        //                /
+        //            }
+        //            else
+        //            {
+
+        //            }
+
+        //            }
+        //    }
+        //}
     }
 }
