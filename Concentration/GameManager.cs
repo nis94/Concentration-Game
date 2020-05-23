@@ -20,7 +20,7 @@ namespace Concentration
             m_player1 = player1;
             m_player2 = player2;
             m_Board = gameBoard;
-            ePlayersTurn playersTurn = ePlayersTurn.Player1;
+            m_playersTurn = ePlayersTurn.Player1;
             r_maxNumOfPairs = (gameBoard.Height * gameBoard.Width) / 2;
         }
 

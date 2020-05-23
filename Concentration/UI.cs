@@ -13,14 +13,14 @@ namespace Concentration
         public void RunMenu()
         {
             Console.WriteLine("Welcome To Concentration Game!");
-            getPlayerInfoFromUser(m_player1);
+            getPlayerInfoFromUser(ref m_player1);
 
             ///////////////////////////////////////////////////////////Check validity
             Console.WriteLine("Press 1 for game against other player\nPress 2 for game against computer");
             string rivalType = Console.ReadLine();
             if (rivalType == "1")
             {
-                getPlayerInfoFromUser(m_player2);
+                getPlayerInfoFromUser(ref m_player2);
             }
             else
             {
@@ -39,7 +39,7 @@ namespace Concentration
             m_newGame = new GameManager(m_player1, m_player2, m_gameBoard);
         }
 
-        private void getPlayerInfoFromUser(Player player)
+        private static void getPlayerInfoFromUser(ref Player player)
         {
             ///////////////////////////////////////////////////////////Check validity
             Console.WriteLine("Please enter player name: ");
@@ -90,7 +90,7 @@ namespace Concentration
                 {
                     m_isEndOfGame = true;
                 }
-                
+                Screen.Clear();
             }
             AnnounceWinnerAndCheckRematch();
         }
