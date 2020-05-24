@@ -63,12 +63,12 @@ namespace Concentration
                 {
                     rndHeightIndex = rnd.Next(0, r_height - 1);
                     rndWidthIndex = rnd.Next(0, r_width - 1);
-                    Board.swapCards(/*ref*/ m_matrix[i, j], /*ref*/ m_matrix[rndHeightIndex, rndWidthIndex]);
+                    Board.swapCards(ref m_matrix[i, j], ref m_matrix[rndHeightIndex, rndWidthIndex]);
                 }
             }
         }
 
-        private static void swapCards(/*ref*/ Card o_crd1, /*ref*/ Card o_crd2)
+        private static void swapCards(ref Card o_crd1, ref Card o_crd2)
         {
             Card tmpCard = o_crd1;
             o_crd1 = o_crd2;
