@@ -5,63 +5,106 @@ namespace Concentration
 {
     public class UI
     {
-        //private Player m_player1, m_player2;
-        // private GameManager m_newGame;
-        //private Board m_gameBoard;
-        //private bool m_isEndOfGame = false;
+        private const char k_exitGame = 'Q'; 
 
-        public static void RunMenu()
+        public static void WellcomeMessage()
         {
             Console.WriteLine("Welcome To Concentration Game!");
-            // getPlayerInfoFromUser(ref m_player1);
-
-            ///////////////////////////////////////////////////////////Check validity
-            Console.WriteLine("Press 1 for game against other player\nPress 2 for game against computer");
-            string rivalType = Console.ReadLine();
-            if (rivalType == "1")
-            {
-                //        getPlayerInfoFromUser(ref m_player2);
-            }
-            else
-            {
-
-            }
-            ////////////////////////////////////////////////////////////////////////////
-
-            ///////////////////////////////////////////////////////////Check validity
-            Console.WriteLine("Please enter the height of the game-board");
-            string height = Console.ReadLine();
-            Console.WriteLine("Please enter the width of the game-board");
-            string width = Console.ReadLine();
-            //        m_gameBoard = new Board(int.Parse(height), int.Parse(width));
-            ///////////////////////////////////////////////////////////
-
-            //     m_newGame = new GameManager(m_player1, m_player2, m_gameBoard);
         }
-
-        private static void getPlayerInfoFromUser(ref Player player)
-        {
-            ///////////////////////////////////////////////////////////Check validity
-            Console.WriteLine("Please enter player name: ");
-            string playerName = Console.ReadLine();
-            player = new Player(playerName);
-            ///////////////////////////////////////////////////////////
-
-        }
-
+        
         public static string GetPlayerName()
         {
-            Console.WriteLine("Please enter player name: ");
-            string playerName = Console.ReadLine();
-            //$$$$Check valid name
+            string playerName;
+            bool isValid;
+
+            Console.Write("Please Enter Player Name: ");
+            do
+            {
+                isValid = true;
+                playerName = Console.ReadLine();
+                if (playerName.Length == 0)
+                {
+                    isValid = false;
+                    Console.Write("Please Try Again: ");
+                }
+            } while (isValid == false);
+
             return playerName;
+        }
+
+        public static string GetRivalType()
+        { 
+            string rivalType;
+            bool isValid;
+
+            Console.WriteLine("Who Do You Want To Play With?\nPress 1 For Other Player\nPress 2 For Computer");
+            do
+            {
+                isValid = true;
+                rivalType = Console.ReadLine();
+                if (rivalType != "0" && rivalType != "1") 
+                {
+                    isValid = false;
+                    Console.Write("Please Try Again: ");
+                }
+            } while (isValid == false);
+
+            return rivalType;
+        }
+
+        public static void getBoardHeightAndWidth(string io_height, string io_width)
+        {
+            bool isValid;
+
+            Console.Write("Please Enter The Hight Of the Board (4 or 6): ");
+            do
+            {
+                isValid = true;
+                io_height = Console.ReadLine();
+                if (io_height != "4" && io_height != "6")
+                {
+                    isValid = false;
+                    Console.Write("Please Try Again: ");
+                }
+            } while (isValid == false);
+
+            Console.Write("Please Enter The Width Of the Board (4 or 6): ");
+            do
+            {
+                isValid = true;
+                io_width = Console.ReadLine();
+                if (io_width != "4" && io_width != "6")
+                {
+                    isValid = false;
+                    Console.Write("Please Try Again: ");
+                }
+            } while (isValid == false);
         }
 
         public static string GetCardLocation()
         {
             ///Check Validity (check if already flipped. check if valid chars) - if Card1Location == Q ----> Exit 
-            Console.WriteLine("Please enter card location: ");
-            string cardLocation = Console.ReadLine();
+
+            string cardLocation;
+            char rowNum, colLetter;
+            bool isValid;
+
+            Console.Write("Please Enter Card Location On The Board(For Example: A1): ");
+            do
+            {
+                isValid = true;
+                cardLocation = Console.ReadLine();
+                rowNum = cardLocation[0];
+                colLetter = cardLocation[1];
+                if (rowNum == k_exitGame)
+                {
+                    ExitGame();
+                }
+                    isValid = false;
+                    Console.Write("Please Try Again: ");
+                
+            } while (isValid == false);
+
             return cardLocation;
         }
 

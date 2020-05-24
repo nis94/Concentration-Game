@@ -7,10 +7,10 @@ namespace Concentration
         public static void Setup()
         {
             string firstPlayerName, secondPlayerName, rivalType;
-            UI.Wellcome(); //$$$ TO DO
 
+            UI.WellcomeMessage(); 
             firstPlayerName = UI.GetPlayerName();
-            rivalType = UI.GetRivalType(); // $$$ TO DO
+            rivalType = UI.GetRivalType(); 
             if (rivalType == "1")
             {
                 secondPlayerName = UI.GetPlayerName();
@@ -28,13 +28,13 @@ namespace Concentration
             string height, width, firstCardLocation, secondCardLocation;
             bool isEndOfGame = false;
 
-            UI.getBoardHeightAndWidth(height, width);// $$$ TO DO
+            UI.getBoardHeightAndWidth(height, width); //$$$ Maybe I should send by ref
             GameManager gameManager = new GameManager(i_firstPlayerName, i_secondPlayerName, height, width);
 
             while (isEndOfGame == false)
             {
                 UI.PrintBoard();
-                firstCardLocation=UI.GetCardLocation(); // $$$ TO DO
+                firstCardLocation=UI.GetCardLocation(); 
 
                 gameManager.flipCard(firstCardLocation);
                 UI.PrintBoard();
