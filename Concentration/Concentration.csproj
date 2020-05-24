@@ -41,6 +41,7 @@
     <Compile Include="ePlayersTurn.cs" />
     <Compile Include="ePlayerType.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="NewGame.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UI.cs" />

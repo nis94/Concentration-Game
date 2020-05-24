@@ -75,6 +75,54 @@ namespace Concentration
             o_crd2 = tmpCard;
         }
 
+        private void showBoard()
+        {
+            /////////////////////////////////////////////$$$ Make it StringBuilder
+        char ch = 'A';
+
+        Console.Write("     ");
+            for (int i = 0; i<m_gameBoard.Height; i++)
+            {
+                Console.Write(ch.ToString());
+                Console.Write("   ");
+                ch++;
+            }
+
+            for (int i = 0; i<m_gameBoard.Height; i++)
+            {
+                Console.Write(Environment.NewLine);
+                Console.Write("   ");
+                for (int k = 0; k<m_gameBoard.Width; k++)
+                {
+                    Console.Write("====");
+                }
+Console.Write("=");
+                Console.Write(Environment.NewLine);
+                Console.Write((i + 1).ToString());
+                Console.Write(" ");
+                for (int j = 0; j<m_gameBoard.Width; j++)
+                {
+                    Console.Write(" | ");
+                    if (m_gameBoard.Matrix[i, j].IsFlipped == true)
+                    {
+                        Console.Write(m_gameBoard.Matrix[i, j].Item.ToString());
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+
+                    }
+                }
+                Console.Write(" |");
+            }
+            Console.Write(Environment.NewLine);
+            Console.Write("   ");
+            for (int j = 0; j<m_gameBoard.Width; j++)
+            {
+                Console.Write("====");
+            }
+            Console.WriteLine("=");
+        }
         internal class Card
         {
             private readonly char m_item;

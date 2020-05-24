@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using Ex02.ConsoleUtils;
 
 namespace Concentration
 {
@@ -15,22 +13,20 @@ namespace Concentration
         private readonly int r_maxNumOfPairs;
         private int m_numOfPairsFounded = 0;
 
-        public GameManager(Player player1, Player player2, Board gameBoard)
+        public GameManager(string playerName1, string playerName2, string height, string width)
         {
-            m_player1 = player1;
-            m_player2 = player2;
-            m_Board = gameBoard;
+            m_player1 = new Player(playerName1);
+            m_player2 = new Player(playerName2);
+            m_Board = new Board(height, width);
             m_playersTurn = ePlayersTurn.Player1;
             r_maxNumOfPairs = (gameBoard.Height * gameBoard.Width) / 2;
         }
-
         public void flipCard(string i_cardCoordinates)
         {
             int col = i_cardCoordinates[0] - 'A';
             int row = i_cardCoordinates[1] - '1';
             m_Board.Matrix[row, col].IsFlipped = !m_Board.Matrix[row, col].IsFlipped;
         }
-
         public bool isPair(string i_card1Coordinates, string i_card2Coordinates)
         {
             int col1 = i_card1Coordinates[0] - 'A';
@@ -40,7 +36,6 @@ namespace Concentration
 
             return (m_Board.Matrix[row1, col1].Item == m_Board.Matrix[row2, col2].Item);
         }
-
         public void switchPlayersTurn()
         {
             if (m_playersTurn == ePlayersTurn.Player1)
@@ -51,6 +46,14 @@ namespace Concentration
             {
                 m_playersTurn = ePlayersTurn.Player1;
             }
+        }
+        public void cardsNotMatch(string firstCardLocation, string secondCardLocation)
+        {
+                    Thread.Sleep(2000);
+                    Screen.Clear();
+                    flipCard(firstCardLocation);
+                    flipCard(secondCardLocation);
+                    switchPlayersTurn();
         }
         public void pairWasFounded()
         {
