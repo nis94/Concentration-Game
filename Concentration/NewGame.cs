@@ -32,11 +32,11 @@ namespace Concentration
 
             UI.GetBoardHeightAndWidth(out height, out width); 
             GameManager gameManager = new GameManager(i_firstPlayerName, i_secondPlayerName, height, width);
-
+            Player currentPlayer = gameManager.Player1;
             while (isEndOfGame == false)
             {
                 UI.PrintBoard(gameManager.Board);
-                if (gameManager.Player2.Type == ePlayerType.Computer)
+                if (currentPlayer.Type == ePlayerType.Computer)
                 {
                     UI.PrintWhichPlayerTurn(gameManager.Player2.Name);
                     firstCardLocation = gameManager.FlipCardRandomAndReturnCardLocation();
@@ -65,6 +65,14 @@ namespace Concentration
                 if (gameManager.IsPair(firstCardLocation, secondCardLocation) == false)
                 {
                     gameManager.CardsNotMatchFlipBack(firstCardLocation, secondCardLocation);
+                    if(currentPlayer==gameManager.Player1)
+                    {
+                        currentPlayer = gameManager.Player2;
+                    }
+                    else
+                    {
+                        currentPlayer = gameManager.Player1;
+                    }
                 }
                 else
                 {

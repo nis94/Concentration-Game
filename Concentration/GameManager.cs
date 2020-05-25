@@ -53,7 +53,7 @@ namespace Concentration
                     rndCol = 0;
                 }
             }
-            string cardLocation = ('A' + rndCol).ToString() + (1 + rndRow).ToString();
+            string cardLocation = ((char)('A' + rndCol)).ToString() + (1 + rndRow).ToString();
             FlipCard(cardLocation);
             return cardLocation;
         }

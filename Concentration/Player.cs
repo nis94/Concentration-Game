@@ -10,7 +10,7 @@ namespace Concentration
         public Player(string i_Name)
         {
             m_Name = i_Name;
-                if (i_Name != "COMPUER")
+            if (i_Name != "COMPUTER")
             {
                 e_PlayerType = ePlayerType.Person;
             }

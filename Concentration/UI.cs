@@ -144,7 +144,7 @@ namespace Concentration
             } while (isValid == false);
 
             return cardLocation;
-        }///Check Validity (check if already flipped. check if valid chars) - 
+        }
 
         public static bool EndOfGameStatusAndCheckRematch(StringBuilder i_msg)
         { //$$$ ADD DEFINE
