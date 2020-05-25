@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Threading;
 using Ex02.ConsoleUtils;
 
 namespace Concentration
@@ -7,7 +9,7 @@ namespace Concentration
     {
         private const char k_exitGame = 'Q'; 
 
-        public static void WellcomeMessage()
+        public static void PrintWellcomeMessage()
         {
             Console.WriteLine("Welcome To Concentration Game!");
         }
@@ -52,7 +54,7 @@ namespace Concentration
             return rivalType;
         }
 
-        public static void getBoardHeightAndWidth(string io_height, string io_width)
+        public static void GetBoardHeightAndWidth(out string o_height, out string o_width)
         {
             bool isValid;
 
@@ -60,8 +62,8 @@ namespace Concentration
             do
             {
                 isValid = true;
-                io_height = Console.ReadLine();
-                if (io_height != "4" && io_height != "6")
+                o_height = Console.ReadLine();
+                if (o_height != "4" && o_height != "6")
                 {
                     isValid = false;
                     Console.Write("Please Try Again: ");
@@ -72,13 +74,18 @@ namespace Concentration
             do
             {
                 isValid = true;
-                io_width = Console.ReadLine();
-                if (io_width != "4" && io_width != "6")
+                o_width = Console.ReadLine();
+                if (o_width != "4" && o_width != "6")
                 {
                     isValid = false;
                     Console.Write("Please Try Again: ");
                 }
             } while (isValid == false);
+        }
+
+        public static void PrintWhichPlayerTurn(string i_name)
+        {
+            Console.WriteLine(i_name + "'s Turn:");
         }
 
         public static string GetCardLocation()
@@ -100,43 +107,58 @@ namespace Concentration
                 {
                     ExitGame();
                 }
+                else if (/* Not like the string template*/)
+                {
                     isValid = false;
-                    Console.Write("Please Try Again: ");
-                
+                    Console.Write("Template Mismatch!, Card Location Should Be CapitelLetter&Number, Please Try Again: ");
+                }
+                else if (/* Point is not on board */)
+                {
+                    isValid = false;
+                    Console.Write("Point Is Not On Board!, Please Try Again: ");
+                }
             } while (isValid == false);
 
             return cardLocation;
         }
 
-
-
-        public static void AnnounceWinnerAndCheckRematch()
+        public static void EndOfGameStatusAndCheckRematch(StringBuilder i_msg)
         {
-            //PrintEndGameStatus();
-            if (/*want rematch*/true)
+            bool isValid;
+            string input;
+            Console.WriteLine(i_msg);
+            Console.WriteLine("Do You Want A Rematch?(y/n)");
+            do
             {
-                //
+                isValid = true;
+                input = Console.ReadLine();
+                if (input != "y" && input != "n")
+                {
+                    isValid = false;
+                    Console.Write("Please Try Again: ");
+                }
+            } while (isValid == false);
+
+            if (input == "y")
+            {
+                // rematch
             }
             else
             {
-                //PrintEndGameStatus();
-                //15 : 0
-                //The winner is Liran
                 ExitGame();
             }
         }
         private static void ExitGame()
         {
-
             Console.WriteLine("Thanks For Playing Concentration, See You Next Time (:");
-
+            Thread.Sleep(2000);
+            Environment.Exit(1);
         }
 
         public static void PrintBoard()
         {
             Screen.Clear();
-            //Call Board.Show()
-
+           // Call Board.Show()
         }
     }
 }

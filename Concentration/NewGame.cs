@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Concentration
 {
@@ -8,7 +9,7 @@ namespace Concentration
         {
             string firstPlayerName, secondPlayerName, rivalType;
 
-            UI.WellcomeMessage(); 
+            UI.PrintWellcomeMessage(); 
             firstPlayerName = UI.GetPlayerName();
             rivalType = UI.GetRivalType(); 
             if (rivalType == "1")
@@ -28,21 +29,28 @@ namespace Concentration
             string height, width, firstCardLocation, secondCardLocation;
             bool isEndOfGame = false;
 
-            UI.getBoardHeightAndWidth(height, width); //$$$ Maybe I should send by ref
+            UI.GetBoardHeightAndWidth(out height, out width); 
             GameManager gameManager = new GameManager(i_firstPlayerName, i_secondPlayerName, height, width);
 
             while (isEndOfGame == false)
             {
                 UI.PrintBoard();
-                firstCardLocation=UI.GetCardLocation(); 
+                if (gameManager.PlayerTurn == ePlayersTurn.Player1)
+                {
+                    UI.PrintWhichPlayerTurn(gameManager.Player1.Name) ;
+                }
 
+                else
+                {
+                    UI.PrintWhichPlayerTurn(gameManager.Player2.Name);
+                }
+
+                firstCardLocation =UI.GetCardLocation(); 
                 gameManager.flipCard(firstCardLocation);
                 UI.PrintBoard();
-
                 secondCardLocation = UI.GetCardLocation(); 
                 gameManager.flipCard(secondCardLocation);
                 UI.PrintBoard();
-
                 if (gameManager.isPair(firstCardLocation, secondCardLocation) == false)
                 {
                     gameManager.cardsNotMatch(firstCardLocation, secondCardLocation);
@@ -58,8 +66,8 @@ namespace Concentration
                 }
             }
 
-            string winnerName = gameManager.PointsStatusAndWinner();// $$$ TO DO
-            UI.AnnounceWinnerAndCheckRematch(winnerName);
+            StringBuilder pointAndWinnerMsg= gameManager.PointsStatusAndWinner();
+            UI.EndOfGameStatusAndCheckRematch(pointAndWinnerMsg);
         }
     }
 }

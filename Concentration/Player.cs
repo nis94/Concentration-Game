@@ -7,8 +7,6 @@ namespace Concentration
         private int m_Score = 0;
         private bool m_IsActive = false;
         private ePlayerType e_PlayerType = ePlayerType.Computer;
-        //private string m_FirstFlip;
-        //private string m_SecondFlip;
 
         public Player()
         { }

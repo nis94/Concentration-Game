@@ -5,17 +5,13 @@ namespace Concentration
     {
         public static void Main()
         {
-          //  Board b = new Board(4, 4);
-           // Player p1 = new Player("Nir");
-          //  Player p2 = new Player("Liran");
-           // GameManager gm = new GameManager(p1, p2, b);
-            //UI ui = new UI();
-            //ui.RunMenu();
-            //ui.RunGame();
-            U
-           
-
-
+          
+            /*TODO:
+            1) Computer player + (AI = Bonus)
+            2) Card location input check
+            3) Board StringBuilder for UI print
+          
+            */
             //printBoard(B);
 
 

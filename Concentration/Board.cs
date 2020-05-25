@@ -77,22 +77,22 @@ namespace Concentration
 
         private void showBoard()
         {
-            /////////////////////////////////////////////$$$ Make it StringBuilder
+            //$$$ Make it StringBuilder 
         char ch = 'A';
 
         Console.Write("     ");
-            for (int i = 0; i<m_gameBoard.Height; i++)
+            for (int i = 0; i<r_height; i++)
             {
                 Console.Write(ch.ToString());
                 Console.Write("   ");
                 ch++;
             }
 
-            for (int i = 0; i<m_gameBoard.Height; i++)
+            for (int i = 0; i<r_height; i++)
             {
                 Console.Write(Environment.NewLine);
                 Console.Write("   ");
-                for (int k = 0; k<m_gameBoard.Width; k++)
+                for (int j = 0; j<r_width; j++)
                 {
                     Console.Write("====");
                 }
@@ -100,12 +100,12 @@ Console.Write("=");
                 Console.Write(Environment.NewLine);
                 Console.Write((i + 1).ToString());
                 Console.Write(" ");
-                for (int j = 0; j<m_gameBoard.Width; j++)
+                for (int j = 0; j<r_width; j++)
                 {
                     Console.Write(" | ");
-                    if (m_gameBoard.Matrix[i, j].IsFlipped == true)
+                    if (m_matrix[i, j].IsFlipped == true)
                     {
-                        Console.Write(m_gameBoard.Matrix[i, j].Item.ToString());
+                        m_matrix[i, j].Show();
                     }
                     else
                     {
@@ -117,7 +117,7 @@ Console.Write("=");
             }
             Console.Write(Environment.NewLine);
             Console.Write("   ");
-            for (int j = 0; j<m_gameBoard.Width; j++)
+            for (int j = 0; j<r_width; j++)
             {
                 Console.Write("====");
             }
@@ -144,6 +144,10 @@ Console.Write("=");
                 set { m_isFlipped = value; }
             }
 
+            public void Show()
+            {
+                Console.Write(m_item.ToString()); 
+            }
         }
     }
 }
