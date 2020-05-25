@@ -10,6 +10,7 @@ namespace Concentration
             1) Computer player + (AI = Bonus)
             2) Card location input check
             3) Board StringBuilder for UI print
+            4) Indexers to the Board 
           
             */
             //printBoard(B);
