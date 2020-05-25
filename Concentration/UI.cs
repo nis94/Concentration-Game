@@ -6,9 +6,7 @@ using Ex02.ConsoleUtils;
 namespace Concentration
 {
     public class UI
-    {
-        private const char k_exitGame = 'Q'; 
-
+    { 
         public static void PrintWellcomeMessage()
         {
             Console.WriteLine("Welcome To Concentration Game!");
@@ -27,7 +25,12 @@ namespace Concentration
                 if (playerName.Length == 0)
                 {
                     isValid = false;
-                    Console.Write("Please Try Again: ");
+                    Console.Write("Name Length Should Be Minimum 1 Letter, Please Try Again: ");
+                }
+                else if(playerName=="COMPUTER")
+                {
+                    isValid = false;
+                    Console.Write("Player Name Can't Be 'COMPUTER', Please Try Again: ");
                 }
             } while (isValid == false);
 
@@ -35,7 +38,7 @@ namespace Concentration
         }
 
         public static string GetRivalType()
-        { 
+        { //$$$ DEFINE
             string rivalType;
             bool isValid;
 
@@ -44,10 +47,10 @@ namespace Concentration
             {
                 isValid = true;
                 rivalType = Console.ReadLine();
-                if (rivalType != "0" && rivalType != "1") 
+                if (rivalType != "1" && rivalType != "2") 
                 {
                     isValid = false;
-                    Console.Write("Please Try Again: ");
+                    Console.Write("You Can Choose 1 Or 2 Only, Please Try Again: ");
                 }
             } while (isValid == false);
 
@@ -56,6 +59,7 @@ namespace Concentration
 
         public static void GetBoardHeightAndWidth(out string o_height, out string o_width)
         {
+            const string k_minSize = "4", k_maxSize = "6";
             bool isValid;
 
             Console.Write("Please Enter The Hight Of the Board (4 or 6): ");
@@ -63,10 +67,10 @@ namespace Concentration
             {
                 isValid = true;
                 o_height = Console.ReadLine();
-                if (o_height != "4" && o_height != "6")
+                if (o_height != k_minSize && o_height != k_maxSize) 
                 {
                     isValid = false;
-                    Console.Write("Please Try Again: ");
+                    Console.Write("Sizes Can Be Only 4 Or 6, Please Try Again: ");
                 }
             } while (isValid == false);
 
@@ -75,7 +79,7 @@ namespace Concentration
             {
                 isValid = true;
                 o_width = Console.ReadLine();
-                if (o_width != "4" && o_width != "6")
+                if (o_width != k_minSize && o_width != k_maxSize)  
                 {
                     isValid = false;
                     Console.Write("Please Try Again: ");
@@ -88,77 +92,141 @@ namespace Concentration
             Console.WriteLine(i_name + "'s Turn:");
         }
 
-        public static string GetCardLocation()
+        public static string GetCardLocation(Board i_gameBoard)
         {
-            ///Check Validity (check if already flipped. check if valid chars) - if Card1Location == Q ----> Exit 
+            const char k_exitGame = 'Q';
 
             string cardLocation;
-            char rowNum, colLetter;
             bool isValid;
 
-            Console.Write("Please Enter Card Location On The Board(For Example: A1): ");
+            Console.Write("Please Enter Card Location On The Board: ");
             do
             {
                 isValid = true;
                 cardLocation = Console.ReadLine();
-                rowNum = cardLocation[0];
-                colLetter = cardLocation[1];
-                if (rowNum == k_exitGame)
+                
+                if (cardLocation.Length == 1)
                 {
-                    ExitGame();
+                    if (cardLocation[0] == k_exitGame)
+                    {
+                        ExitGame();
+                    }
+                    else
+                    {
+                        isValid = false;
+                        Console.Write("Input Size Mismatch, Please Try Again: ");
+                    }
                 }
-                else if (/* Not like the string template*/)
+                else if (cardLocation.Length > 2 || cardLocation.Length == 0)
                 {
                     isValid = false;
-                    Console.Write("Template Mismatch!, Card Location Should Be CapitelLetter&Number, Please Try Again: ");
-                }
-                else if (/* Point is not on board */)
+                    Console.Write("Input Size Mismatch, Please Try Again: ");
+                }      
+                else
                 {
-                    isValid = false;
-                    Console.Write("Point Is Not On Board!, Please Try Again: ");
+                    int column = cardLocation[0] - 'A';
+                    int row = cardLocation[1] - '1';
+                    if (column >= i_gameBoard.Width || column < 0 || row >= i_gameBoard.Height || row < 0)
+                    {
+                        isValid = false;
+                        Console.Write("No Such Location On Board!, Please Try Again: ");
+                    }
+                    else if (i_gameBoard.Matrix[row, column].IsFlipped == true)
+                    {
+                        isValid = false;
+                        Console.Write("Location Is Already Taken!, Please Try Again: ");
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             } while (isValid == false);
 
             return cardLocation;
-        }
+        }///Check Validity (check if already flipped. check if valid chars) - 
 
-        public static void EndOfGameStatusAndCheckRematch(StringBuilder i_msg)
-        {
-            bool isValid;
+        public static bool EndOfGameStatusAndCheckRematch(StringBuilder i_msg)
+        { //$$$ ADD DEFINE
+            bool isValid, isRematchWanted;
             string input;
             Console.WriteLine(i_msg);
-            Console.WriteLine("Do You Want A Rematch?(y/n)");
+            Console.WriteLine("Do You Want A Rematch?(Y/N)");
             do
             {
                 isValid = true;
                 input = Console.ReadLine();
-                if (input != "y" && input != "n")
+                if (input != "Y" && input != "N")
                 {
                     isValid = false;
-                    Console.Write("Please Try Again: ");
+                    Console.Write("Invalid Input!, Please Try Again: ");
                 }
             } while (isValid == false);
 
-            if (input == "y")
+            if (input == "Y")
             {
-                // rematch
+                isRematchWanted = true;
             }
             else
             {
-                ExitGame();
+                isRematchWanted = false;
             }
+            return isRematchWanted;
         }
-        private static void ExitGame()
+        public static void ExitGame()
         {
             Console.WriteLine("Thanks For Playing Concentration, See You Next Time (:");
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
             Environment.Exit(1);
         }
 
-        public static void PrintBoard()
+        public static void PrintBoard(Board i_gameBoard)
         {
+            char ch = 'A';
             Screen.Clear();
-           // Call Board.Show()
+                Console.Write("     ");
+                for (int i = 0; i < i_gameBoard.Height; i++)
+                {
+                    Console.Write(ch.ToString());
+                    Console.Write("   ");
+                    ch++;
+                }
+
+                for (int i = 0; i < i_gameBoard.Height; i++)
+                {
+                    Console.Write(Environment.NewLine);
+                    Console.Write("   ");
+                    for (int j = 0; j < i_gameBoard.Width; j++)
+                    {
+                        Console.Write("====");
+                    }
+                    Console.Write("=");
+                    Console.Write(Environment.NewLine);
+                    Console.Write((i + 1).ToString());
+                    Console.Write(" ");
+                    for (int j = 0; j < i_gameBoard.Width; j++)
+                    {
+                        Console.Write(" | ");
+                        if (i_gameBoard.Matrix[i, j].IsFlipped == true)
+                        {
+                        i_gameBoard.Matrix[i, j].Show();
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+
+                        }
+                    }
+                    Console.Write(" |");
+                }
+                Console.Write(Environment.NewLine);
+                Console.Write("   ");
+                for (int j = 0; j < i_gameBoard.Width; j++)
+                {
+                    Console.Write("====");
+                }
+                Console.WriteLine("=");
+            
         }
     }
 }

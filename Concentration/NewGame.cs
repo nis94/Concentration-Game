@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Ex02.ConsoleUtils;
 
 namespace Concentration
 {
@@ -34,30 +35,40 @@ namespace Concentration
 
             while (isEndOfGame == false)
             {
-                UI.PrintBoard();
-                if (gameManager.PlayerTurn == ePlayersTurn.Player1)
-                {
-                    UI.PrintWhichPlayerTurn(gameManager.Player1.Name) ;
-                }
-
-                else
+                UI.PrintBoard(gameManager.Board);
+                if (gameManager.Player2.Type == ePlayerType.Computer)
                 {
                     UI.PrintWhichPlayerTurn(gameManager.Player2.Name);
-                }
-
-                firstCardLocation =UI.GetCardLocation(); 
-                gameManager.flipCard(firstCardLocation);
-                UI.PrintBoard();
-                secondCardLocation = UI.GetCardLocation(); 
-                gameManager.flipCard(secondCardLocation);
-                UI.PrintBoard();
-                if (gameManager.isPair(firstCardLocation, secondCardLocation) == false)
-                {
-                    gameManager.cardsNotMatch(firstCardLocation, secondCardLocation);
+                    firstCardLocation = gameManager.FlipCardRandomAndReturnCardLocation();
+                    UI.PrintBoard(gameManager.Board);
+                    secondCardLocation = gameManager.FlipCardRandomAndReturnCardLocation();
+                    UI.PrintBoard(gameManager.Board);
                 }
                 else
                 {
-                    gameManager.pairWasFounded();
+                    if(gameManager.PlayerTurn == ePlayersTurn.Player1)
+                    {
+                        UI.PrintWhichPlayerTurn(gameManager.Player1.Name);
+                    }
+                    else
+                    {
+                        UI.PrintWhichPlayerTurn(gameManager.Player2.Name);
+                    }
+                    firstCardLocation = UI.GetCardLocation(gameManager.Board);
+                    gameManager.FlipCard(firstCardLocation);
+                    UI.PrintBoard(gameManager.Board);
+                    secondCardLocation = UI.GetCardLocation(gameManager.Board);
+                    gameManager.FlipCard(secondCardLocation);
+                    UI.PrintBoard(gameManager.Board);
+                }
+
+                if (gameManager.IsPair(firstCardLocation, secondCardLocation) == false)
+                {
+                    gameManager.CardsNotMatchFlipBack(firstCardLocation, secondCardLocation);
+                }
+                else
+                {
+                    gameManager.PairWasFounded();
                 }
 
                 if (gameManager.NumOfPairsFounded == gameManager.MaxNumOfPairs)
@@ -66,8 +77,15 @@ namespace Concentration
                 }
             }
 
-            StringBuilder pointAndWinnerMsg= gameManager.PointsStatusAndWinner();
-            UI.EndOfGameStatusAndCheckRematch(pointAndWinnerMsg);
+            StringBuilder pointStatusAndWinnerMsg= gameManager.PointsStatusAndWinner();
+            if(UI.EndOfGameStatusAndCheckRematch(pointStatusAndWinnerMsg)==true)
+            {
+                RunGame(gameManager.Player1.Name, gameManager.Player2.Name);
+            }
+            else
+            {
+                UI.ExitGame();
+            }
         }
     }
 }

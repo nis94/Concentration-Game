@@ -1,13 +1,12 @@
 ﻿using System;
 namespace Concentration
 {
-    internal class Board
+    public class Board
     {
         private readonly int r_height;
         private readonly int r_width;
         private Card[,] m_matrix;
         
-
         public Board(int height, int width)
         {
             r_height = height;
@@ -75,55 +74,8 @@ namespace Concentration
             o_crd2 = tmpCard;
         }
 
-        private void showBoard()
-        {
-            //$$$ Make it StringBuilder 
-        char ch = 'A';
-
-        Console.Write("     ");
-            for (int i = 0; i<r_height; i++)
-            {
-                Console.Write(ch.ToString());
-                Console.Write("   ");
-                ch++;
-            }
-
-            for (int i = 0; i<r_height; i++)
-            {
-                Console.Write(Environment.NewLine);
-                Console.Write("   ");
-                for (int j = 0; j<r_width; j++)
-                {
-                    Console.Write("====");
-                }
-Console.Write("=");
-                Console.Write(Environment.NewLine);
-                Console.Write((i + 1).ToString());
-                Console.Write(" ");
-                for (int j = 0; j<r_width; j++)
-                {
-                    Console.Write(" | ");
-                    if (m_matrix[i, j].IsFlipped == true)
-                    {
-                        m_matrix[i, j].Show();
-                    }
-                    else
-                    {
-                        Console.Write(" ");
-
-                    }
-                }
-                Console.Write(" |");
-            }
-            Console.Write(Environment.NewLine);
-            Console.Write("   ");
-            for (int j = 0; j<r_width; j++)
-            {
-                Console.Write("====");
-            }
-            Console.WriteLine("=");
-        }
-        internal class Card
+   
+        public class Card
         {
             private readonly char m_item;
             private bool m_isFlipped = false;
