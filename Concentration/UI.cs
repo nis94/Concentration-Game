@@ -7,12 +7,12 @@ namespace Concentration
 {
     public class UI
     { 
-        public static void PrintWellcomeMessage()
+        internal static void PrintWellcomeMessage()
         {
-            Console.WriteLine("Welcome To Concentration Game!");
+            Console.WriteLine("Welcome To Concentration Game"+ Environment.NewLine);
         }
         
-        public static string GetPlayerName()
+        internal static string GetPlayerName()
         {
             string playerName;
             bool isValid;
@@ -37,7 +37,7 @@ namespace Concentration
             return playerName;
         }
 
-        public static string GetRivalType()
+        internal static string GetRivalType()
         { //$$$ DEFINE
             string rivalType;
             bool isValid;
@@ -57,49 +57,58 @@ namespace Concentration
             return rivalType;
         }
 
-        public static void GetBoardHeightAndWidth(out string o_height, out string o_width)
+        internal static void GetBoardHeightAndWidth(out string o_height, out string o_width)
         {
-            const string k_minSize = "4", k_maxSize = "6";
+            const string k_minSize = "4",k_medSize="5", k_maxSize = "6";
             bool isValid;
 
-            Console.Write("Please Enter The Hight Of the Board (4 or 6): ");
+            Console.Write("Please Enter The Hight Of the Board (4 - 6): ");
             do
             {
                 isValid = true;
                 o_height = Console.ReadLine();
-                if (o_height != k_minSize && o_height != k_maxSize) 
+                if (int.Parse(o_height) < int.Parse(k_minSize) || int.Parse(o_height) > int.Parse(k_maxSize)) 
                 {
                     isValid = false;
-                    Console.Write("Sizes Can Be Only 4 Or 6, Please Try Again: ");
+                    Console.Write("Hight Can Be Only Between 4 And 6, Please Try Again: ");
                 }
             } while (isValid == false);
 
-            Console.Write("Please Enter The Width Of the Board (4 or 6): ");
+            Console.Write("Please Enter The Width Of the Board (4 - 6): ");
             do
             {
                 isValid = true;
                 o_width = Console.ReadLine();
-                if (o_width != k_minSize && o_width != k_maxSize)  
+                if (int.Parse(o_width) < int.Parse(k_minSize) || int.Parse(o_width) > int.Parse(k_maxSize))
                 {
                     isValid = false;
-                    Console.Write("Please Try Again: ");
+                    Console.Write("Hight Can Be Only Between 4 And 6, Please Try Again: ");
+                }
+                else if (o_height == k_medSize && o_width == k_medSize)
+                {
+                    isValid = false;
+                    Console.Write("Total Board Size Should Be Even. Please Choose 4 Or 6: ");
+                }
+                else
+                {
+                    break;
                 }
             } while (isValid == false);
         }
 
-        public static void PrintWhichPlayerTurn(string i_name)
+        internal static void PrintWhichPlayerTurn(string i_name)
         {
-            Console.WriteLine(i_name + "'s Turn:");
+            Console.WriteLine(i_name + "'s Turn");
         }
 
-        public static string GetCardLocation(Board i_gameBoard)
+        internal static string GetCardLocation(Board i_gameBoard)
         {
             const char k_exitGame = 'Q';
 
             string cardLocation;
             bool isValid;
 
-            Console.Write("Please Enter Card Location On The Board: ");
+            Console.Write("Please Enter Card Location On The Board (CAPITAL-LETTER and NUMBER): ");
             do
             {
                 isValid = true;
@@ -146,24 +155,26 @@ namespace Concentration
             return cardLocation;
         }
 
-        public static bool EndOfGameStatusAndCheckRematch(StringBuilder i_msg)
-        { //$$$ ADD DEFINE
+        internal static bool EndOfGameStatusAndCheckRematch(StringBuilder i_msg)
+        {
+            const string k_yes = "Y", k_no = "N";
             bool isValid, isRematchWanted;
             string input;
+
             Console.WriteLine(i_msg);
-            Console.WriteLine("Do You Want A Rematch?(Y/N)");
+            Console.WriteLine("Do You Want A Rematch? (Y/N)");
             do
             {
                 isValid = true;
                 input = Console.ReadLine();
-                if (input != "Y" && input != "N")
+                if (input != k_yes && input != k_no)
                 {
                     isValid = false;
                     Console.Write("Invalid Input!, Please Try Again: ");
                 }
             } while (isValid == false);
 
-            if (input == "Y")
+            if (input == k_yes)
             {
                 isRematchWanted = true;
             }
@@ -173,19 +184,22 @@ namespace Concentration
             }
             return isRematchWanted;
         }
-        public static void ExitGame()
+
+        internal static void ExitGame()
         {
+            const int k_validExit = 1, k_freezeTime=4000;
+
             Console.WriteLine("Thanks For Playing Concentration, See You Next Time (:");
-            Thread.Sleep(5000);
-            Environment.Exit(1);
+            Thread.Sleep(k_freezeTime);
+            Environment.Exit(k_validExit);
         }
 
-        public static void PrintBoard(Board i_gameBoard)
+        internal static void PrintBoard(Board i_gameBoard)
         {
             char ch = 'A';
             Screen.Clear();
                 Console.Write("     ");
-                for (int i = 0; i < i_gameBoard.Height; i++)
+                for (int j = 0; j < i_gameBoard.Width; j++)
                 {
                     Console.Write(ch.ToString());
                     Console.Write("   ");

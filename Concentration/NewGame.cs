@@ -31,7 +31,7 @@ namespace Concentration
             bool isEndOfGame = false;
 
             UI.GetBoardHeightAndWidth(out height, out width); 
-            GameManager gameManager = new GameManager(i_firstPlayerName, i_secondPlayerName, height, width);
+            GameManager gameManager = new GameManager(/*$$$i_firstPlayerName$$$*/"COMPUTER", i_secondPlayerName, height, width);
             Player currentPlayer = gameManager.Player1;
             while (isEndOfGame == false)
             {

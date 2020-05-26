@@ -14,18 +14,6 @@ namespace Concentration
             m_matrix = new Card[height, width];
             this.makeNewGameBoard();
         }
-        public int Height
-        {
-            get { return r_height; }
-        }
-        public int Width
-        {
-            get { return r_width; }
-        }
-        public Card[,] Matrix
-        {
-            get { return m_matrix; }
-        }
 
         private void makeNewGameBoard()
         {
@@ -43,10 +31,21 @@ namespace Concentration
                 {
                     m_matrix[i, j] = new Card(ch);
                     ch++;
-                    if (i == r_height / 2 - 1 && j == r_width - 1 && isFirstRound)
+                    if (r_height % 2 == 0)
                     {
-                        ch = 'G';
-                        isFirstRound = !true;
+                        if (i == r_height / 2 - 1 && j == r_width - 1 && isFirstRound)
+                        {
+                            ch = 'G';
+                            isFirstRound = false;
+                        }
+                    }
+                    else
+                    {
+                        if (i == r_height / 2 && j == r_width / 2 - 1 && isFirstRound) 
+                        {
+                            ch = 'G';
+                            isFirstRound = false;
+                        }
                     }
                 }
             }
@@ -74,7 +73,18 @@ namespace Concentration
             o_crd2 = tmpCard;
         }
 
-   
+        public int Height
+        {
+            get { return r_height; }
+        }
+        public int Width
+        {
+            get { return r_width; }
+        }
+        public Card[,] Matrix
+        {
+            get { return m_matrix; }
+        }
         public class Card
         {
             private readonly char m_item;
