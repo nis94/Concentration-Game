@@ -12,3 +12,5 @@ C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentrat
 C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Concentration.pdb
 C:\Users\nirol\Source\Repos\Concentration-Game\Concentration\bin\Debug\Ex02.ConsoleUtils.dll
 C:\Users\nirol\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.csproj.CopyComplete
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\bin\Debug\Ex02.ConsoleUtils.dll
+C:\Users\user\Source\Repos\Concentration-Game\Concentration\obj\Debug\Concentration.csproj.CopyComplete

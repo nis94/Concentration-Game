@@ -14,8 +14,8 @@ namespace Concentration
 /*
         TO-DO
 
-1) Indexers
-2) defines + StyleScope + ACCSES MODIFAYERS 
+
+2) defines + StyleScope + ACCSES MODIFAYERS - capital case data members, i_inputs, defines, 
 
 */
 

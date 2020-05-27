@@ -38,7 +38,8 @@ namespace Concentration
         }
 
         internal static string GetRivalType()
-        { //$$$ DEFINE
+        { 
+            const string k_VsPlayer = "1", k_VsComputer = "2";
             string rivalType;
             bool isValid;
 
@@ -47,7 +48,7 @@ namespace Concentration
             {
                 isValid = true;
                 rivalType = Console.ReadLine();
-                if (rivalType != "1" && rivalType != "2") 
+                if (rivalType != k_VsPlayer && rivalType != k_VsComputer) 
                 {
                     isValid = false;
                     Console.Write("You Can Choose 1 Or 2 Only, Please Try Again: ");
@@ -59,7 +60,7 @@ namespace Concentration
 
         internal static void GetBoardHeightAndWidth(out string o_height, out string o_width)
         {
-            const string k_minSize = "4",k_medSize="5", k_maxSize = "6";
+            const string k_MinSize = "4",k_MedSize="5", k_MaxSize = "6";
             bool isValid;
 
             Console.Write("Please Enter The Hight Of the Board (4 - 6): ");
@@ -67,7 +68,7 @@ namespace Concentration
             {
                 isValid = true;
                 o_height = Console.ReadLine();
-                if (int.Parse(o_height) < int.Parse(k_minSize) || int.Parse(o_height) > int.Parse(k_maxSize)) 
+                if (int.Parse(o_height) < int.Parse(k_MinSize) || int.Parse(o_height) > int.Parse(k_MaxSize)) 
                 {
                     isValid = false;
                     Console.Write("Hight Can Be Only Between 4 And 6, Please Try Again: ");
@@ -79,12 +80,12 @@ namespace Concentration
             {
                 isValid = true;
                 o_width = Console.ReadLine();
-                if (int.Parse(o_width) < int.Parse(k_minSize) || int.Parse(o_width) > int.Parse(k_maxSize))
+                if (int.Parse(o_width) < int.Parse(k_MinSize) || int.Parse(o_width) > int.Parse(k_MaxSize))
                 {
                     isValid = false;
                     Console.Write("Hight Can Be Only Between 4 And 6, Please Try Again: ");
                 }
-                else if (o_height == k_medSize && o_width == k_medSize)
+                else if (o_height == k_MedSize && o_width == k_MedSize)
                 {
                     isValid = false;
                     Console.Write("Total Board Size Should Be Even. Please Choose 4 Or 6: ");
@@ -140,7 +141,7 @@ namespace Concentration
                         isValid = false;
                         Console.Write("No Such Location On Board!, Please Try Again: ");
                     }
-                    else if (i_gameBoard.Matrix[row, column].IsFlipped == true)
+                    else if (i_gameBoard[row, column].IsFlipped == true)
                     {
                         isValid = false;
                         Console.Write("Location Is Already Taken!, Please Try Again: ");
@@ -221,9 +222,9 @@ namespace Concentration
                     for (int j = 0; j < i_gameBoard.Width; j++)
                     {
                         Console.Write(" | ");
-                        if (i_gameBoard.Matrix[i, j].IsFlipped == true)
+                        if (i_gameBoard[i, j].IsFlipped == true)
                         {
-                        i_gameBoard.Matrix[i, j].Show();
+                        i_gameBoard[i, j].Show();
                         }
                         else
                         {
