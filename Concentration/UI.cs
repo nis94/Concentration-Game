@@ -108,7 +108,7 @@ namespace Concentration
             string cardLocation;
             bool isValid;
 
-            Console.Write("Please Enter Card Location On The Board (CAPITAL-LETTER and NUMBER): ");
+            Console.Write("Please Enter Card Location On The Board (CAPITAL-LETTER and NUMBER) Or 'Q' For Exit: ");
             do
             {
                 isValid = true;

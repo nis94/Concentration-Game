@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
-using Ex02.ConsoleUtils;
+using System.Threading;
+
 
 namespace Concentration
 {
@@ -29,6 +30,7 @@ namespace Concentration
         {
             string height, width, firstCardLocation, secondCardLocation;
             bool isEndOfGame = false;
+            const int k_freezeTime = 1750;
 
             UI.GetBoardHeightAndWidth(out height, out width); 
             GameManager gameManager = new GameManager(i_firstPlayerName, i_secondPlayerName, height, width);
@@ -41,6 +43,8 @@ namespace Concentration
                     UI.PrintWhichPlayerTurn(gameManager.Player2.Name);
                     firstCardLocation = gameManager.FlipCardRandomAndReturnCardLocation();
                     UI.PrintBoard(gameManager.Board);
+                    UI.PrintWhichPlayerTurn(gameManager.Player2.Name);
+                    Thread.Sleep(k_freezeTime);
                     secondCardLocation = gameManager.FlipCardRandomAndReturnCardLocation();
                     UI.PrintBoard(gameManager.Board);
                 }

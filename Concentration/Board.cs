@@ -85,6 +85,11 @@ namespace Concentration
         {
             get { return m_matrix; }
         }
+        public Card this[int i,int j]
+        {
+            get { return m_matrix[i,j]; }
+            set { m_matrix[i, j] = value; }
+        }
         public class Card
         {
             private readonly char m_item;
