@@ -23,13 +23,13 @@ namespace Concentration
             r_MaxNumOfPairs = (m_Board.Height * m_Board.Width) / 2;
         }
         
-        public void FlipCard(string i_cardCoordinates)
+        internal void FlipCard(string i_cardCoordinates)
         {
             int col = i_cardCoordinates[0] - 'A';
             int row = i_cardCoordinates[1] - '1';
             m_Board[row, col].IsFlipped = !m_Board[row, col].IsFlipped;
         }
-        public string FlipCardRandomAndReturnCardLocation()
+        internal string FlipCardRandomAndReturnCardLocation()
         {
             int rndRow, rndCol;
             Random rnd = new Random();
@@ -59,7 +59,7 @@ namespace Concentration
             return cardLocation;
         }
 
-        public bool IsPair(string i_card1Coordinates, string i_card2Coordinates)
+        internal bool IsPair(string i_card1Coordinates, string i_card2Coordinates)
         {
             int col1 = i_card1Coordinates[0] - 'A';
             int row1 = i_card1Coordinates[1] - '1';
@@ -68,7 +68,7 @@ namespace Concentration
 
             return (m_Board[row1, col1].Item == m_Board[row2, col2].Item);
         }
-        public void SwitchPlayersTurn()
+        internal void SwitchPlayersTurn()
         {
             if (m_PlayersTurn == ePlayersTurn.Player1)
             {
@@ -79,7 +79,7 @@ namespace Concentration
                 PlayerTurn = ePlayersTurn.Player1;
             }
         }
-        public void CardsNotMatchFlipBack(string i_firstCardLocation, string i_secondCardLocation)
+        internal void CardsNotMatchFlipBack(string i_firstCardLocation, string i_secondCardLocation)
         {
                     Thread.Sleep(2000);
                     Screen.Clear();
@@ -87,7 +87,7 @@ namespace Concentration
                     FlipCard(i_secondCardLocation);
                     SwitchPlayersTurn();
         }
-        public void PairWasFounded()
+        internal void PairWasFounded()
         {
             m_NumOfPairsFounded++;
             if (m_PlayersTurn == ePlayersTurn.Player1)
@@ -100,7 +100,7 @@ namespace Concentration
             }
         }
 
-        public StringBuilder PointsStatusAndWinner()
+        internal StringBuilder PointsStatusAndWinner()
         {
             StringBuilder msg = new StringBuilder();
             msg.Append(m_Player1.Score.ToString());
@@ -156,7 +156,5 @@ namespace Concentration
             get { return m_Board; }
             set { m_Board = value; }
         }
-
-
     }
 }

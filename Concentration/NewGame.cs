@@ -7,7 +7,7 @@ namespace Concentration
 {
     public class NewGame
     {
-        public static void StartGame()
+        internal static void StartGame()
         {
             string firstPlayerName, secondPlayerName, rivalType;
 
@@ -26,7 +26,7 @@ namespace Concentration
             RunGame(firstPlayerName, secondPlayerName);
         }
 
-        public static void RunGame(string i_firstPlayerName, string i_secondPlayerName)
+        internal static void RunGame(string i_firstPlayerName, string i_secondPlayerName)
         {
             string height, width, firstCardLocation, secondCardLocation;
             bool isEndOfGame = false;

@@ -10,12 +10,3 @@ namespace Concentration
     }
 }
 
-
-/*
-        TO-DO
-
-1) indexers
-2) defines + StyleScope + ACCSES MODIFAYERS - capital case data members, i_inputs, defines, 
-3) Formating
-*/
-

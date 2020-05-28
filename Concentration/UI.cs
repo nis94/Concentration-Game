@@ -9,9 +9,10 @@ namespace Concentration
     { 
         internal static void PrintWellcomeMessage()
         {
-            Console.WriteLine("Welcome To Concentration Game"+ Environment.NewLine);
+            Console.WriteLine("Welcome To Concentration Game");
+            Console.WriteLine(Environment.NewLine);
         }
-        
+
         internal static string GetPlayerName()
         {
             string playerName;
@@ -27,10 +28,14 @@ namespace Concentration
                     isValid = false;
                     Console.Write("Name Length Should Be Minimum 1 Letter, Please Try Again: ");
                 }
-                else if(playerName=="COMPUTER")
+                else if (playerName == "COMPUTER")
                 {
                     isValid = false;
                     Console.Write("Player Name Can't Be 'COMPUTER', Please Try Again: ");
+                }
+                else
+                {
+                    break;
                 }
             } while (isValid == false);
 
@@ -109,7 +114,8 @@ namespace Concentration
             string cardLocation;
             bool isValid;
 
-            Console.Write("Please Enter Card Location On The Board (CAPITAL-LETTER and NUMBER) Or 'Q' For Exit: ");
+            Console.WriteLine("Please Enter Card Location On The Board (For Example 'A1')");
+            Console.WriteLine("Or Press 'Q' To Exit The Game"); 
             do
             {
                 isValid = true;

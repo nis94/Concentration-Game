@@ -5,13 +5,13 @@ namespace Concentration
     {
         private readonly int r_Height;
         private readonly int r_Width;
-        private Card[,] m_Matrix;
+        private readonly Card[,] r_Matrix;
         
         public Board(int i_height, int i_width)
         {
             r_Height = i_height;
             r_Width = i_width;
-            m_Matrix = new Card[i_height, i_width];
+            r_Matrix = new Card[i_height, i_width];
             this.MakeNewGameBoard();
         }
 
@@ -29,7 +29,7 @@ namespace Concentration
             {
                 for (int j = 0; j < r_Width; j++)
                 {
-                    m_Matrix[i, j] = new Card(ch);
+                    r_Matrix[i, j] = new Card(ch);
                     ch++;
                     if (r_Height % 2 == 0)
                     {
@@ -61,7 +61,7 @@ namespace Concentration
                 {
                     rndHeightIndex = rnd.Next(0, r_Height - 1);
                     rndWidthIndex = rnd.Next(0, r_Width - 1);
-                    Board.SwapCards(ref m_Matrix[i, j], ref m_Matrix[rndHeightIndex, rndWidthIndex]);
+                    Board.SwapCards(ref r_Matrix[i, j], ref r_Matrix[rndHeightIndex, rndWidthIndex]);
                 }
             }
         }
@@ -83,12 +83,12 @@ namespace Concentration
         }
         public Card[,] Matrix
         {
-            get { return m_Matrix; }
+            get { return r_Matrix; }
         }
         public Card this[int i,int j]
         {
-            get { return m_Matrix[i,j]; }
-            set { m_Matrix[i, j] = value; }
+            get { return r_Matrix[i,j]; }
+            set { r_Matrix[i, j] = value; }
         }
         public class Card
         {
