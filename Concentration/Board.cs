@@ -1,7 +1,8 @@
 ﻿using System;
+
 namespace Concentration
 {
-    public class Board
+    internal class Board
     {
         private readonly int r_Height;
         private readonly int r_Width;
@@ -13,6 +14,13 @@ namespace Concentration
             r_Width = i_width;
             r_Matrix = new Card[i_height, i_width];
             this.MakeNewGameBoard();
+        }
+
+        private static void SwapCards(ref Card o_crd1, ref Card o_crd2)
+        {
+            Card tmpCard = o_crd1;
+            o_crd1 = o_crd2;
+            o_crd2 = tmpCard;
         }
 
         private void MakeNewGameBoard()
@@ -33,7 +41,7 @@ namespace Concentration
                     ch++;
                     if (r_Height % 2 == 0)
                     {
-                        if (i == r_Height / 2 - 1 && j == r_Width - 1 && isFirstRound)
+                        if (i == (r_Height / 2) - 1 && j == (r_Width - 1) && isFirstRound == true) 
                         {
                             ch = 'G';
                             isFirstRound = false;
@@ -41,7 +49,7 @@ namespace Concentration
                     }
                     else
                     {
-                        if (i == r_Height / 2 && j == r_Width / 2 - 1 && isFirstRound) 
+                        if (i == r_Height / 2 && j == (r_Width / 2) - 1 && isFirstRound == true) 
                         {
                             ch = 'G';
                             isFirstRound = false;
@@ -50,6 +58,7 @@ namespace Concentration
                 }
             }
         }
+
         private void ShuffleCards()
         {
             Random rnd = new Random();
@@ -66,31 +75,28 @@ namespace Concentration
             }
         }
 
-        private static void SwapCards(ref Card o_crd1, ref Card o_crd2)
-        {
-            Card tmpCard = o_crd1;
-            o_crd1 = o_crd2;
-            o_crd2 = tmpCard;
-        }
-
         public int Height
         {
             get { return r_Height; }
         }
+
         public int Width
         {
             get { return r_Width; }
         }
+
         public Card[,] Matrix
         {
             get { return r_Matrix; }
         }
+
         public Card this[int i,int j]
         {
             get { return r_Matrix[i,j]; }
             set { r_Matrix[i, j] = value; }
         }
-        public class Card
+
+        internal class Card
         {
             private readonly char m_Item;
             private bool m_IsFlipped = false;
@@ -118,4 +124,3 @@ namespace Concentration
         }
     }
 }
-

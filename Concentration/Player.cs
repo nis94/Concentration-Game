@@ -2,7 +2,7 @@
 
 namespace Concentration
 {
-    public class Player
+    internal class Player
     {
         private readonly string m_Name;
         private int m_Score = 0;

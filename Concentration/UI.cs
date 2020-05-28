@@ -5,8 +5,8 @@ using Ex02.ConsoleUtils;
 
 namespace Concentration
 {
-    public class UI
-    { 
+    internal class UI
+    {
         internal static void PrintWellcomeMessage()
         {
             Console.WriteLine("Welcome To Concentration Game");
@@ -21,7 +21,6 @@ namespace Concentration
             Console.Write("Please Enter Player Name: ");
             do
             {
-                isValid = true;
                 playerName = Console.ReadLine();
                 if (playerName.Length == 0)
                 {
@@ -37,13 +36,14 @@ namespace Concentration
                 {
                     break;
                 }
-            } while (isValid == false);
+            }
+            while (isValid == false);
 
             return playerName;
         }
 
         internal static string GetRivalType()
-        { 
+        {
             const string k_VsPlayer = "1", k_VsComputer = "2";
             string rivalType;
             bool isValid;
@@ -53,37 +53,41 @@ namespace Concentration
             {
                 isValid = true;
                 rivalType = Console.ReadLine();
-                if (rivalType != k_VsPlayer && rivalType != k_VsComputer) 
+                if (rivalType != k_VsPlayer && rivalType != k_VsComputer)
                 {
                     isValid = false;
                     Console.Write("You Can Choose 1 Or 2 Only, Please Try Again: ");
                 }
-            } while (isValid == false);
+            }
+            while (isValid == false);
 
             return rivalType;
         }
 
         internal static void GetBoardHeightAndWidth(out string o_height, out string o_width)
         {
-            const string k_MinSize = "4",k_MedSize="5", k_MaxSize = "6";
+            const string k_MinSize = "4", k_MedSize = "5", k_MaxSize = "6";
             bool isValid;
 
             Console.Write("Please Enter The Hight Of the Board (4 - 6): ");
             do
             {
-                isValid = true;
                 o_height = Console.ReadLine();
-                if (int.Parse(o_height) < int.Parse(k_MinSize) || int.Parse(o_height) > int.Parse(k_MaxSize)) 
+                if (int.Parse(o_height) < int.Parse(k_MinSize) || int.Parse(o_height) > int.Parse(k_MaxSize))
                 {
                     isValid = false;
                     Console.Write("Hight Can Be Only Between 4 And 6, Please Try Again: ");
                 }
-            } while (isValid == false);
+                else
+                {
+                    break;
+                }
+            } 
+            while (isValid == false);
 
             Console.Write("Please Enter The Width Of the Board (4 - 6): ");
             do
             {
-                isValid = true;
                 o_width = Console.ReadLine();
                 if (int.Parse(o_width) < int.Parse(k_MinSize) || int.Parse(o_width) > int.Parse(k_MaxSize))
                 {
@@ -99,7 +103,8 @@ namespace Concentration
                 {
                     break;
                 }
-            } while (isValid == false);
+            } 
+            while (isValid == false);
         }
 
         internal static void PrintWhichPlayerTurn(string i_name)
@@ -115,12 +120,12 @@ namespace Concentration
             bool isValid;
 
             Console.WriteLine("Please Enter Card Location On The Board (For Example 'A1')");
-            Console.WriteLine("Or Press 'Q' To Exit The Game"); 
+            Console.WriteLine("Or Press 'Q' To Exit The Game");
             do
             {
                 isValid = true;
                 cardLocation = Console.ReadLine();
-                
+
                 if (cardLocation.Length == 1)
                 {
                     if (cardLocation[0] == k_exitGame)
@@ -137,7 +142,7 @@ namespace Concentration
                 {
                     isValid = false;
                     Console.Write("Input Size Mismatch, Please Try Again: ");
-                }      
+                }
                 else
                 {
                     int column = cardLocation[0] - 'A';
@@ -157,7 +162,8 @@ namespace Concentration
                         break;
                     }
                 }
-            } while (isValid == false);
+            } 
+            while (isValid == false);
 
             return cardLocation;
         }
@@ -179,7 +185,8 @@ namespace Concentration
                     isValid = false;
                     Console.Write("Invalid Input!, Please Try Again: ");
                 }
-            } while (isValid == false);
+            }
+            while (isValid == false);
 
             if (input == k_yes)
             {
@@ -194,7 +201,7 @@ namespace Concentration
 
         internal static void ExitGame()
         {
-            const int k_validExit = 1, k_freezeTime=4000;
+            const int k_validExit = 1, k_freezeTime = 4000;
 
             Console.WriteLine("Thanks For Playing Concentration, See You Next Time (:");
             Thread.Sleep(k_freezeTime);
@@ -205,51 +212,49 @@ namespace Concentration
         {
             char ch = 'A';
             Screen.Clear();
-                Console.Write("     ");
-                for (int j = 0; j < i_gameBoard.Width; j++)
-                {
-                    Console.Write(ch.ToString());
-                    Console.Write("   ");
-                    ch++;
-                }
+            Console.Write("     ");
+            for (int j = 0; j < i_gameBoard.Width; j++)
+            {
+                Console.Write(ch.ToString());
+                Console.Write("   ");
+                ch++;
+            }
 
-                for (int i = 0; i < i_gameBoard.Height; i++)
-                {
-                    Console.Write(Environment.NewLine);
-                    Console.Write("   ");
-                    for (int j = 0; j < i_gameBoard.Width; j++)
-                    {
-                        Console.Write("====");
-                    }
-                    Console.Write("=");
-                    Console.Write(Environment.NewLine);
-                    Console.Write((i + 1).ToString());
-                    Console.Write(" ");
-                    for (int j = 0; j < i_gameBoard.Width; j++)
-                    {
-                        Console.Write(" | ");
-                        if (i_gameBoard[i, j].IsFlipped == true)
-                        {
-                        i_gameBoard[i, j].Show();
-                        }
-                        else
-                        {
-                            Console.Write(" ");
-
-                        }
-                    }
-                    Console.Write(" |");
-                }
+            for (int i = 0; i < i_gameBoard.Height; i++)
+            {
                 Console.Write(Environment.NewLine);
                 Console.Write("   ");
                 for (int j = 0; j < i_gameBoard.Width; j++)
                 {
                     Console.Write("====");
                 }
-                Console.WriteLine("=");
-            
+                Console.Write("=");
+                Console.Write(Environment.NewLine);
+                Console.Write((i + 1).ToString());
+                Console.Write(" ");
+                for (int j = 0; j < i_gameBoard.Width; j++)
+                {
+                    Console.Write(" | ");
+                    if (i_gameBoard[i, j].IsFlipped == true)
+                    {
+                        i_gameBoard[i, j].Show();
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.Write(" |");
+            }
+
+            Console.Write(Environment.NewLine);
+            Console.Write("   ");
+            for (int j = 0; j < i_gameBoard.Width; j++)
+            {
+                Console.Write("====");
+            }
+
+            Console.WriteLine("=");
         }
     }
 }
-
-

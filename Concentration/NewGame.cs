@@ -2,18 +2,17 @@
 using System.Text;
 using System.Threading;
 
-
 namespace Concentration
 {
-    public class NewGame
+    internal class NewGame
     {
         internal static void StartGame()
         {
             string firstPlayerName, secondPlayerName, rivalType;
 
-            UI.PrintWellcomeMessage(); 
+            UI.PrintWellcomeMessage();
             firstPlayerName = UI.GetPlayerName();
-            rivalType = UI.GetRivalType(); 
+            rivalType = UI.GetRivalType();
             if (rivalType == "1")
             {
                 secondPlayerName = UI.GetPlayerName();
@@ -28,11 +27,11 @@ namespace Concentration
 
         internal static void RunGame(string i_firstPlayerName, string i_secondPlayerName)
         {
-            string height, width, firstCardLocation, secondCardLocation;
+            string firstCardLocation, secondCardLocation;
             bool isEndOfGame = false;
             const int k_freezeTime = 1750;
 
-            UI.GetBoardHeightAndWidth(out height, out width); 
+            UI.GetBoardHeightAndWidth(out string height, out string width);
             GameManager gameManager = new GameManager(i_firstPlayerName, i_secondPlayerName, height, width);
             Player currentPlayer = gameManager.Player1;
             while (isEndOfGame == false)
@@ -50,7 +49,7 @@ namespace Concentration
                 }
                 else
                 {
-                    if(gameManager.PlayerTurn == ePlayersTurn.Player1)
+                    if (gameManager.PlayerTurn == ePlayersTurn.Player1)
                     {
                         UI.PrintWhichPlayerTurn(gameManager.Player1.Name);
                     }
@@ -58,6 +57,7 @@ namespace Concentration
                     {
                         UI.PrintWhichPlayerTurn(gameManager.Player2.Name);
                     }
+
                     firstCardLocation = UI.GetCardLocation(gameManager.Board);
                     gameManager.FlipCard(firstCardLocation);
                     UI.PrintBoard(gameManager.Board);
@@ -69,7 +69,7 @@ namespace Concentration
                 if (gameManager.IsPair(firstCardLocation, secondCardLocation) == false)
                 {
                     gameManager.CardsNotMatchFlipBack(firstCardLocation, secondCardLocation);
-                    if(currentPlayer==gameManager.Player1)
+                    if (currentPlayer == gameManager.Player1)
                     {
                         currentPlayer = gameManager.Player2;
                     }
@@ -89,8 +89,8 @@ namespace Concentration
                 }
             }
 
-            StringBuilder pointStatusAndWinnerMsg= gameManager.PointsStatusAndWinner();
-            if(UI.EndOfGameStatusAndCheckRematch(pointStatusAndWinnerMsg)==true)
+            StringBuilder pointStatusAndWinnerMsg = gameManager.PointsStatusAndWinner();
+            if (UI.EndOfGameStatusAndCheckRematch(pointStatusAndWinnerMsg) == true)
             {
                 RunGame(gameManager.Player1.Name, gameManager.Player2.Name);
             }

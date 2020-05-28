@@ -1,9 +1,8 @@
 ﻿namespace Concentration
 {
-    public enum ePlayerType
+    internal enum ePlayerType
     {
         Person = 0,
         Computer = 1
     }
 }
-

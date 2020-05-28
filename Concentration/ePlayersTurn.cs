@@ -1,6 +1,6 @@
 ﻿    namespace Concentration
     {
-        public enum ePlayersTurn
+        internal enum ePlayersTurn
         {
             Player1 = 1,
             Player2 = 2

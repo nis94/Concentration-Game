@@ -5,13 +5,13 @@ using Ex02.ConsoleUtils;
 
 namespace Concentration
 {
-    class GameManager
+    internal class GameManager
     {
+        private readonly int r_MaxNumOfPairs;
         private Board m_Board;
         private Player m_Player1;
         private Player m_Player2;
         private ePlayersTurn m_PlayersTurn;
-        private readonly int r_MaxNumOfPairs;
         private int m_NumOfPairsFounded = 0;
 
         public GameManager(string i_playerName1, string i_playerName2, string i_height, string i_width)
@@ -29,12 +29,13 @@ namespace Concentration
             int row = i_cardCoordinates[1] - '1';
             m_Board[row, col].IsFlipped = !m_Board[row, col].IsFlipped;
         }
+
         internal string FlipCardRandomAndReturnCardLocation()
         {
             int rndRow, rndCol;
             Random rnd = new Random();
 
-            rndRow = rnd.Next(0,m_Board.Height);
+            rndRow = rnd.Next(0, m_Board.Height);
             rndCol = rnd.Next(0, m_Board.Width);
 
             while (m_Board[rndRow, rndCol].IsFlipped == true)
@@ -50,12 +51,14 @@ namespace Concentration
                 }
                 else
                 {
-                    rndRow=0;
+                    rndRow = 0;
                     rndCol = 0;
                 }
             }
+
             string cardLocation = ((char)('A' + rndCol)).ToString() + (1 + rndRow).ToString();
             FlipCard(cardLocation);
+
             return cardLocation;
         }
 
@@ -66,8 +69,9 @@ namespace Concentration
             int col2 = i_card2Coordinates[0] - 'A';
             int row2 = i_card2Coordinates[1] - '1';
 
-            return (m_Board[row1, col1].Item == m_Board[row2, col2].Item);
+            return m_Board[row1, col1].Item == m_Board[row2, col2].Item;
         }
+
         internal void SwitchPlayersTurn()
         {
             if (m_PlayersTurn == ePlayersTurn.Player1)
@@ -79,6 +83,7 @@ namespace Concentration
                 PlayerTurn = ePlayersTurn.Player1;
             }
         }
+
         internal void CardsNotMatchFlipBack(string i_firstCardLocation, string i_secondCardLocation)
         {
                     Thread.Sleep(2000);
@@ -87,6 +92,7 @@ namespace Concentration
                     FlipCard(i_secondCardLocation);
                     SwitchPlayersTurn();
         }
+
         internal void PairWasFounded()
         {
             m_NumOfPairsFounded++;
@@ -118,7 +124,6 @@ namespace Concentration
                 {
                     msg.Append(m_Player1.Name);
                 }
-
                 else
                 {
                     msg.Append(m_Player2.Name);
@@ -132,25 +137,30 @@ namespace Concentration
         {
             get { return r_MaxNumOfPairs; }
         }
+
         public int NumOfPairsFounded
         {
             get { return m_NumOfPairsFounded; }
         }
+
         public ePlayersTurn PlayerTurn
         {
             get { return m_PlayersTurn; }
             set { m_PlayersTurn = value; }
         }
+
         public Player Player1
         {
             get { return m_Player1; }
             set { m_Player1 = value; }
         }
+
         public Player Player2
         {
             get { return m_Player2; }
             set { m_Player2 = value; }
         }
+
         public Board Board
         {
             get { return m_Board; }
