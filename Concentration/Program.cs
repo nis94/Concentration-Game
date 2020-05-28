@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Concentration
 {
     public class Program
@@ -9,4 +10,3 @@ namespace Concentration
         }
     }
 }
-

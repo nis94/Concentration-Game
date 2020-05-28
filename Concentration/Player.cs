@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Concentration
 {
     public class Player
@@ -26,8 +27,6 @@ namespace Concentration
             get { return m_Score; }
             set { m_Score = value; }
         }
-
-
 
         public ePlayerType Type
         {
