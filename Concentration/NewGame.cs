@@ -7,7 +7,7 @@ namespace Concentration
 {
     public class NewGame
     {
-        public static void Setup()
+        public static void StartGame()
         {
             string firstPlayerName, secondPlayerName, rivalType;
 
