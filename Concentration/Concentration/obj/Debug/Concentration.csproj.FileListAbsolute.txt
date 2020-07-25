@@ -1,0 +1,10 @@
+C:\Users\nirol\source\repos\Concentration\Concentration\bin\Debug\Concentration.exe.config
+C:\Users\nirol\source\repos\Concentration\Concentration\bin\Debug\Concentration.exe
+C:\Users\nirol\source\repos\Concentration\Concentration\bin\Debug\Concentration.pdb
+C:\Users\nirol\source\repos\Concentration\Concentration\obj\Debug\Concentration.csprojAssemblyReference.cache
+C:\Users\nirol\source\repos\Concentration\Concentration\obj\Debug\Concentration.Properties.Resources.resources
+C:\Users\nirol\source\repos\Concentration\Concentration\obj\Debug\Concentration.csproj.GenerateResource.cache
+C:\Users\nirol\source\repos\Concentration\Concentration\obj\Debug\Concentration.exe
+C:\Users\nirol\source\repos\Concentration\Concentration\obj\Debug\Concentration.pdb
+C:\Users\nirol\source\repos\Concentration\Concentration\obj\Debug\Concentration.FormSettings.resources
+C:\Users\nirol\source\repos\Concentration\Concentration\obj\Debug\Concentration.FormConcentrationGame.resources
